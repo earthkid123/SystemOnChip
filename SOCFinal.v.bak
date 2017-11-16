@@ -1,0 +1,40 @@
+module verilog(in, clk, rst, sat);
+
+input in, clk, rst;
+output reg sat;
+
+reg[2:0] state;
+
+always@(posedge clk or posedge rst)
+begin
+     if (rst)
+          state = 3'b000;
+			 sat = 0;
+     else
+          case (state)
+               3'b000:
+                  state = 3'b001;
+               3'b001:
+                  state = 3'b010;
+               3'b010:
+                  state = 3'b011;
+               3'b011:
+						state = 3'b100;
+					3'b100:
+					   state = 3'b101;
+					3'b101:
+					   state = 3'b110;
+					3'b110:
+					begin
+					  state = 3'b111;
+					  sat = 1;
+					end
+					3'b111:
+					if(sat)
+						state= seven;
+					else 
+						state=zero;
+          endcase
+end
+
+endmodule

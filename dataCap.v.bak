@@ -1,0 +1,40 @@
+module dataCap(in, clk, prevSat, return, data, toCRC, toCRCclk captured)
+
+input in, clk, prevSat;
+output return, toCRC, toCRCclk, captured;
+output reg [7:0] data;
+integer count;
+
+always@(prevSat)
+begin
+	if(prevSat)
+	begin
+		count = 0;
+		captured = 0;
+	end
+	else
+		return = 0;
+end
+
+always@(data)
+		count = count + 1;
+		
+always@(count)
+begin
+	if(count == 8)
+	begin
+		captured = 1;
+		return = 1;
+	end
+	else
+		captured = 0;
+end
+		
+always@(posedge clk)
+begin
+	if(prevSat)
+	begin
+		data[count] = in;
+	end
+end
+			
