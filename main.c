@@ -1,9 +1,7 @@
-// 0.Documentation Section 
 // main.c
-// Runs on LM4F120 or TM4C123
+// Runs on TM4C123
 // C6_InputOutput, Input from PF4, output to PF2 (blue LED)
-// Authors: Daniel Valvano, Jonathan Valvano and Ramesh Yerraballi
-// Date: July 8, 2013
+
 
 // LaunchPad built-in hardware
 // SW1 left switch is negative logic PF4 on the Launchpad
